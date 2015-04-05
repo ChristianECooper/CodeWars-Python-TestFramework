@@ -55,16 +55,18 @@ class Test(object):
         self.successes += 1
 
     def report(self):
+        end = datetime.now()
         print "\nTest run complete"
-        print "  Total tests: {}, Failures: {}, Successes: {}".format(
-            self.failures + self.successes,
-            self.failures,
-            self.successes)
+        print "Passed: {}".format(self.successes)
+        print "Failed: {}".format(self.failures)
+        print "Total:  {}".format(self.successes + self.failures)
+
+        delta = end - self.start
+        print "Process took {:,}ms to complete".format((delta.microseconds + 1000000 * delta.seconds) // 1000)
         if self.failures == 0:
             print "Happy Days!"
         else:
             print "Better luck next time!"
-
 
 test = Test()
 sys.exitfunc=test.report
