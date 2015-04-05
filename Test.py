@@ -2,6 +2,11 @@ import sys
 
 
 class Test(object):
+    """
+    Implements the test interface as described here:
+    http://www.codewars.com/docs/python-test-reference-1
+    """
+    
     def __init__(self):
         self.desc = "Undefined"
         self.it = "Undefined"
