@@ -1,5 +1,5 @@
 import sys
-
+from datetime import datetime
 
 class Test(object):
     """
@@ -12,6 +12,7 @@ class Test(object):
         self.it = "Undefined"
         self.failures = 0
         self.successes = 0
+        self.start = datetime.now()
 
     def describe(self, msg):
         print msg
