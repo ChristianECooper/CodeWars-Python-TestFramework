@@ -48,7 +48,7 @@ class Test(object):
         self._assert(be, b, None, msg)
 
     def _error(self, msg, expected, actual):
-        print "*** ERROR: {}".format(msg.format(expected, actual))
+        print "*** ERROR: {}".format(msg.format(actual, expected))
         self.failures += 1
 
     def _success(self):
