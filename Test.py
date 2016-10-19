@@ -8,8 +8,8 @@ class Test(object):
     """
     
     def __init__(self):
-        self.desc = "Undefined"
-        self.it = "Undefined"
+        self.desc = u"Undefined"
+        self.it = u"Undefined"
         self.failures = 0
         self.successes = 0
         self.start = datetime.now()
@@ -28,27 +28,27 @@ class Test(object):
         else:
             self._success()
 
-    def assert_equals(self, actual, expected, msg="{} should be {}"):
+    def assert_equals(self, actual, expected, msg=u"{} should be {}"):
         eq = lambda a, b: a == b
         self._assert(eq, actual, expected, msg)
 
-    def assert_not_equals(self, actual, unexpected, msg="{} should be {}"):
+    def assert_not_equals(self, actual, unexpected, msg=u"{} should be {}"):
         neq = lambda a, b: a != b
         self._assert(neq, actual, unexpected, msg)
 
     def expect_error(self, msg, fn):
         try:
             fn()
-            self._error("Expected an error" if not msg else msg, None, None)
+            self._error(u"Expected an error" if not msg else msg, None, None)
         except:
             self._success()
 
-    def expect(self, b, msg="Unexpected result"):
+    def expect(self, b, msg=u"Unexpected result"):
         be = lambda a, e: b
         self._assert(be, b, None, msg)
 
     def _error(self, msg, expected, actual):
-        print "*** ERROR: {}".format(msg.format(actual, expected))
+        print u"*** ERROR: {}".format(msg.format(actual, expected))
         self.failures += 1
 
     def _success(self):
@@ -57,17 +57,17 @@ class Test(object):
 
     def report(self):
         end = datetime.now()
-        print "\nTest run complete"
-        print "Passed: {}".format(self.successes)
-        print "Failed: {}".format(self.failures)
-        print "Total:  {}".format(self.successes + self.failures)
+        print u"\nTest run complete"
+        print u"Passed: {}".format(self.successes)
+        print u"Failed: {}".format(self.failures)
+        print u"Total:  {}".format(self.successes + self.failures)
 
         delta = end - self.start
-        print "Process took {:,}ms to complete".format((delta.microseconds + 1000000 * delta.seconds) // 1000)
+        print u"Process took {:,}ms to complete".format((delta.microseconds + 1000000 * delta.seconds) // 1000)
         if self.failures == 0:
-            print "Happy Days!"
+            print u"Happy Days!"
         else:
-            print "Better luck next time!"
+            print u"Better luck next time!"
 
 test = Test()
 sys.exitfunc=test.report
