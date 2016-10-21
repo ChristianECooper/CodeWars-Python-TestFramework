@@ -9,7 +9,7 @@ class Test(object):
     
     def __init__(self):
         self.desc = u"Undefined"
-        self.it = u"Undefined"
+        self.itmsg = u"Undefined"
         self.failures = 0
         self.successes = 0
         self.start = datetime.now()
@@ -20,7 +20,7 @@ class Test(object):
 
     def it(self, msg):
         print msg
-        self.it = msg
+        self.itmsg = msg
 
     def _assert(self, p, actual, expected, msg):
         if not p(expected, actual):
